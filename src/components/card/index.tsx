@@ -1,6 +1,14 @@
+import styles from "./card.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
+
 export default function Card({ title, coverUrl, tags, summary }) {
   return (
-    <div style={{ backgroundImage: `url('${coverUrl}')` }}>
+    <div
+      className={cx("card")}
+      style={{ backgroundImage: `url('${coverUrl}')` }}
+    >
       <h1>{title}</h1>
       <div>
         {tags.map((tag) => (
