@@ -1,6 +1,7 @@
 import { fetchAllPosts } from "@/api/request";
-import Image from "next/image";
 import Head from "next/head";
+import Card from "@/components/card";
+
 export default function Home({ allPosts }) {
   console.log(allPosts);
   return (
@@ -9,20 +10,17 @@ export default function Home({ allPosts }) {
         <title>Home :: In9yuBlog</title>
       </Head>
       <main>
-        {allPosts.map((post) => (
-          <div
-            key={post.id}
-            style={{ backgroundImage: `url('${post.coverUrl}')` }}
-          >
-            <h1>{post.title}</h1>
-            <div>
-              {post.tags.map((tag) => (
-                <span key={tag.id}>{tag.name}</span>
-              ))}
-            </div>
-            <p>{post.summary}</p>
-          </div>
-        ))}
+        <section>
+          {allPosts.map(({ id, title, coverUrl, tags, summary }) => (
+            <Card
+              key={id}
+              title={title}
+              coverUrl={coverUrl}
+              tags={tags}
+              summary={summary}
+            />
+          ))}
+        </section>
       </main>
     </>
   );
