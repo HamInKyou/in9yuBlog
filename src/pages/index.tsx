@@ -1,6 +1,10 @@
 import { fetchAllPosts } from "@/api/request";
 import Head from "next/head";
 import Card from "@/components/card";
+import styles from "@/styles/home.module.scss";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles);
 
 export default function Home({ allPosts }) {
   console.log(allPosts);
@@ -10,7 +14,7 @@ export default function Home({ allPosts }) {
         <title>Home :: In9yuBlog</title>
       </Head>
       <main>
-        <section>
+        <section className={cx("allPostSection")}>
           {allPosts.map(({ id, title, coverUrl, tags, summary }) => (
             <Card
               key={id}
