@@ -18,6 +18,7 @@ export default function Home({ allPosts }) {
           {allPosts.map(({ id, title, coverUrl, tag, summary }) => (
             <Card
               key={id}
+              postId={id}
               title={title}
               coverUrl={coverUrl}
               tag={tag}
