@@ -1,5 +1,11 @@
 .allPostSection {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(500px, auto));
   gap: 5px;
+}
+
+@media (max-width: 500px) {
+  .allPostSection {
+    grid-template-columns: 1fr;
+  }
 }

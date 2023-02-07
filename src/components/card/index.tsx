@@ -3,19 +3,20 @@ import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
-export default function Card({ title, coverUrl, tags, summary }) {
+export default function Card({ title, coverUrl, tag, summary }) {
+  console.log(tag);
   return (
     <div
       className={cx("card")}
       style={{ backgroundImage: `url('${coverUrl}')` }}
     >
-      <h1>{title}</h1>
-      <div>
-        {tags.map((tag) => (
-          <span key={tag.id}>{tag.name}</span>
-        ))}
+      <div className={cx("card__over")}>
+        <div key={tag.id} className={cx("card__tag")}>
+          {tag}
+        </div>
+        <strong className={cx("card__title")}>{title}</strong>
+        <p className={cx("card__summary")}>{summary}</p>
       </div>
-      <p>{summary}</p>
     </div>
   );
 }

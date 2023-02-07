@@ -15,12 +15,12 @@ export default function Home({ allPosts }) {
       </Head>
       <main>
         <section className={cx("allPostSection")}>
-          {allPosts.map(({ id, title, coverUrl, tags, summary }) => (
+          {allPosts.map(({ id, title, coverUrl, tag, summary }) => (
             <Card
               key={id}
               title={title}
               coverUrl={coverUrl}
-              tags={tags}
+              tag={tag}
               summary={summary}
             />
           ))}
@@ -38,7 +38,7 @@ export async function getServerSideProps() {
       title: post.properties.title.title[0].plain_text,
       coverUrl: post.cover.external.url,
       summary: post.properties.summary.rich_text[0].plain_text,
-      tags: post.properties.tags.multi_select,
+      tag: post.properties.tag.select.name,
     };
   });
   return {
